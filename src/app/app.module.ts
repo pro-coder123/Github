@@ -6,13 +6,15 @@ import { AppComponent } from './app.component';
 import { RepositoriesComponent } from './repositories/repositories.component';
 import { FunctionsService } from './functions.service';
 import { HttpClientModule } from '@angular/common/http';
+import { CreateComponent } from './create/create.component';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    RepositoriesComponent
+    RepositoriesComponent,
+    CreateComponent
   ],
   imports: [
     BrowserModule,

@@ -15,7 +15,7 @@ export class RepositoriesComponent implements OnInit {
   constructor(private _service : FunctionsService, private http : HttpClient) {
 
    }
-   public res : Array<Object>;
+   public res : any;
    private rep_url ="https://api.github.com/users/pro-coder123/repos";
   ngOnInit() {
 
