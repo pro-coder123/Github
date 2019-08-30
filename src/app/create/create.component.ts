@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 @Component({
   selector: 'app-create',
   templateUrl: './create.component.html',
@@ -7,13 +7,10 @@ import { HttpClient } from '@angular/common/http';
 })
 export class CreateComponent implements OnInit {
 
-  constructor(private http : HttpClient) { }
+  constructor(private http: HttpClient) { }
 
+  public
   ngOnInit() {
   }
-  _url = " https://api.github.com/user/repos";
-  fire()
-  {
-      this.http.post
-  }
+  
 }

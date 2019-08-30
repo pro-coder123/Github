@@ -4,3 +4,7 @@
 <div *ngFor = "let reps of res">
     <h2>{{reps.full_name}}</h2>
 </div>
+
+
+<input #name type="text" placeholder="Enter name of new repository">
+<button (click)="fire(name.value)">Click</button>
