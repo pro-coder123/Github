@@ -1,0 +1,32 @@
+
+
+<div *ngIf = "is"  class="card">
+        <div class="panel-heading">
+                <a href="{{data.html_url}}" target="_blank">{{data.html_url}} </a>
+            </div>
+      <div class="panel-body">
+            <div class="row">
+                    <div class="col-md-10">
+                       <h4>Name</h4><p>{{data.name}}</p>
+                    </div>
+                </div>
+            <div class="row">
+                <div class="col-md-10">
+                   <h4> Created by</h4><p>{{data.owner.login}}</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-10">
+                        <h4> Description</h4><p>{{data.description}}</p>
+                </div>
+
+            </div>
+            <div class="row">
+                    <div class="col-md-10">
+                            <h4>Created date and time</h4><p>{{data.created_at}}</p>
+                    </div>
+    
+                </div>
+    
+    </div>
+    </div>

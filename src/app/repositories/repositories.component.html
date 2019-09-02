@@ -1,10 +1,48 @@
-<h1>My Respositories</h1>
+
+<nav class="navbar bg-dark navbar-dark fixed-top">
+        
+                <h1 style="font-size: 25px;color: white; height: 10%;">
+                        Github 
+                </h1>
+                <h2 class="jumbotron" style="margin-left: 120px; padding:inherit;">pro-coder123</h2>
+                <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Repository search" #_search>
+                        <button (click) = "Search(_search.value)" class="btn btn-success">Search</button>
+                </div>
+</nav>
+<!-- <div class="container"> -->
+    
+<div *ngIf="(search_results | keyvalue)?.length">
+<h2 style="margin-top : 5%;">Search results</h2>
+
+<div class="row">
+<div class="col-md-5">
+<div *ngFor = "let reps of search_results.items">
+
+    <a class="nav-link" href="#" (click) = "change(reps)">{{reps.full_name}}</a>
+</div>
+</div>
+<div class="col-md-5">
+<app-repo-info [data]="clicked" [is]="isclicked"></app-repo-info>
+
+</div>
+</div>
+</div>
+<!-- </div> -->
 
 
+<h2 style="margin-top : 5%;">My Respositories</h2>
+<div class="flex-container">
 <div *ngFor = "let reps of res">
-    <h2>{{reps.full_name}}</h2>
+   <a>{{reps.full_name.substr(13)}}</a>
+</div>
 </div>
 
 
+
+<h2>Create a new Repository right now!</h2>
+
 <input #name type="text" placeholder="Enter name of new repository">
-<button (click)="fire(name.value)">Click</button>
+
+<button (click)="fire(name.value)" class="close">Create</button>
+
