@@ -32,17 +32,47 @@
 
 
 <h2 style="margin-top : 5%;">My Respositories</h2>
+<p>Click on a repository to delete it</p>
 <div class="flex-container">
 <div *ngFor = "let reps of res">
-   <a>{{reps.full_name.substr(13)}}</a>
+   <button class="btn btn-default" (click)="set(reps.name)" data-toggle="modal" data-target="#confirm">{{reps.name}}</button>
 </div>
 </div>
+<div class="modal" id="confirm">
+        <div class="modal-dialog">
+          <div class="modal-content">
+      
+            <!-- Modal Header -->
+            <div class="modal-header">
+              <h4 class="modal-title">{{toDelete}} will be deleted</h4>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+      
+            <!-- Modal body -->
+            <div class="modal-body">
+                    <div class="container">
+                
+                            <form action="#">
+                              <h3>Are you sure?</h3>
+
+                            </form>
+                          </div>
+            </div>
+      
+            <!-- Modal footer -->
+            <div class="modal-footer">
+              <button type="button" (click) = "del()" class="btn btn-danger" data-dismiss="modal">Yes</button>
+            </div>
+      
+          </div>
+        </div>
+      </div>   
 
 
 
 <h2>Create a new Repository right now!</h2>
 
-<input #name type="text" placeholder="Enter name of new repository">
+<input #name type="text" class="form-control" placeholder="Enter name of new repository">
 
-<button (click)="fire(name.value)" class="close">Create</button>
+<button (click)="fire(name.value)" class="btn btn-primary">Create</button>
 

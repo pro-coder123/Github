@@ -28,7 +28,10 @@ export class RepositoriesComponent implements OnInit {
   public clicked : any;
   public isclicked = false;
 
+  public toDelete : string;
+  
 
+  
   ngOnInit() {
     
     this.test=false;
@@ -36,6 +39,9 @@ export class RepositoriesComponent implements OnInit {
       this.res = res;
     });
     
+  }
+  options = {
+    headers: new HttpHeaders({ 'Authorization': 'token ' })
   }
 
   
@@ -49,11 +55,8 @@ export class RepositoriesComponent implements OnInit {
       "gitignore_template": "nanoc"
 
     };
-    let options = {
-      headers: new HttpHeaders({ 'Authorization': 'token ' })
-    }
-
-    this.http.post(this._url, this.myObj, options).subscribe(s => {
+    
+    this.http.post(this._url, this.myObj, this.options).subscribe(s => {
       this.res.push(s);
     });
 
@@ -65,7 +68,21 @@ export class RepositoriesComponent implements OnInit {
     this.clicked=reps;
     this.isclicked=true;
   }
+  set(value)
+  {
+    this.toDelete = value;
+  }
+  del()
+  {
+    console.log(this.toDelete);
+    let delete_url="https://api.github.com/repos/pro-coder123/"+this.toDelete;
+    this.http.delete(delete_url,this.options).subscribe(x => {
 
+      this.res = this.res.filter(item => item.name !== this.toDelete);
+
+    });
+
+  }
   Search(_search)
   {
       if(_search == "")
