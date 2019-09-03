@@ -48,7 +48,7 @@ export class RepositoriesComponent implements OnInit {
       );
   }
   options = {
-    headers: new HttpHeaders({ 'Authorization': 'token 0f0e44cb78c99ca12c529126a62ba5cb756bd7ab' })
+    headers: new HttpHeaders({ 'Authorization': 'token ' })
   }
 
   
