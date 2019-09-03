@@ -32,10 +32,9 @@
 
 
 <h2 style="margin-top : 5%;">My Respositories</h2>
-<p>Click on a repository to delete it</p>
 <div class="flex-container">
 <div *ngFor = "let reps of res">
-   <button class="btn btn-default" (click)="set(reps.name)" data-toggle="modal" data-target="#confirm">{{reps.name}}</button>
+   <button class="btn btn-default" (click)="set(reps.name,reps)" data-toggle="modal" data-target="#confirm">{{reps.name}}</button>
 </div>
 </div>
 <div class="modal" id="confirm">
@@ -44,24 +43,51 @@
       
             <!-- Modal Header -->
             <div class="modal-header">
-              <h4 class="modal-title">{{toDelete}} will be deleted</h4>
+              <h4 class="modal-title">{{chosen}}</h4>
               <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
       
             <!-- Modal body -->
             <div class="modal-body">
-                    <div class="container">
-                
-                            <form action="#">
-                              <h3>Are you sure?</h3>
-
-                            </form>
-                          </div>
+                    <div class="card bg-light text-dark">
+                        <div class="card bg-light text-dark">
+                            <div class="panel-heading">
+                                    <a href="{{chosen_obj.html_url}}" target="_blank">{{chosen_obj.html_url}} </a>
+                                </div>
+                          <div class="panel-body">
+                                <div class="row">
+                                        <div class="col-md-10">
+                                           <h4>Name</h4><p>{{chosen_obj.name}}</p>
+                                        </div>
+                                    </div>
+                                <div class="row">
+                                    <div class="col-md-10">
+                                       <h4> Created by</h4><p>{{chosen_obj.owner.login}}</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-10">
+                                            <h4> Description</h4><p>{{chosen_obj.description}}</p>
+                                    </div>
+                    
+                                </div>
+                                <div class="row">
+                                        <div class="col-md-10">
+                                                <h4>Created date and time</h4><p>{{chosen_obj.created_at}}</p>
+                                        </div>
+                        
+                                    </div>
+                        
+                        </div>
+                        </div>
+                    </div>
             </div>
       
             <!-- Modal footer -->
             <div class="modal-footer">
-              <button type="button" (click) = "del()" class="btn btn-danger" data-dismiss="modal">Yes</button>
+              <button type="button" (click) = "del()" class="btn btn-danger" data-dismiss="modal">Delete</button>
+              <button type="button" (click) = "add()"class="btn btn-success" data-dismiss="modal">Add to favourites</button>
+              <button type="button" (click) = "remove()" class="btn btn-info" data-dismiss="modal">Remove</button>
             </div>
       
           </div>
@@ -75,4 +101,11 @@
 <input #name type="text" class="form-control" placeholder="Enter name of new repository">
 
 <button (click)="fire(name.value)" class="btn btn-primary">Create</button>
+
+<h2 style="margin-top : 5%;">My Favourite Respositories</h2>
+<div class="flex-container">
+<div *ngFor = "let reps of favourite">
+   <button class="btn btn-warning"(click)="set(reps.name,reps)" data-toggle="modal" data-target="#confirm">{{reps.name}}</button>
+</div>
+</div>
 
